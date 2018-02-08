@@ -1,0 +1,11 @@
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ll -CF'
+alias v='vim'
+alias r='printf "\033c"'
+alias aliases="vim ~/.aliases.sh && source ~/.aliases.sh"
+alias p="python"
+alias s="git status -s"
+alias zshconfig="vim ~/.zshrc && source ~/.zshrc"
+alias helpers="vim ~/.shell_helpers.sh && source ~/.shell_helpers.sh"
+alias master="git checkout master"
