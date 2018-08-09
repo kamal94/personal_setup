@@ -1,3 +1,7 @@
+alias ga="git add"
+alias s="git status"
+alias gc="git commit"
+alias gco="git checkout"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ll -CF'
