@@ -1,0 +1,98 @@
+
+function tr-facebook() {
+    tocopy=$1
+    scp -r -i ~/.ssh/finiejah.pem $tocopy ubuntu@54.175.202.80:/olympus/lucida-clinc/$tocopy
+}
+
+# docker command added during standard clinc setup
+function docker-flush() {
+    docker kill $(docker ps -q)
+    dockerlist=$(docker ps -a -q)
+        for d in ${dockerlist}; do
+            echo "###### ${d}"
+            # docker stop ${d} 2>&1 > /dev/null
+            # docker rm ${d} 2>&1 > /dev/null
+        done
+    if [ "${dockerlist}" != "" ]; then
+        for d in ${dockerlist}; do
+            echo "***** ${d}"
+            # docker stop ${d} 2>&1 > /dev/null
+            docker rm ${d} 2>&1 > /dev/null
+        done
+    fi
+}
+
+function lucida-full-stack() {
+    docker-flush && make docker && docker-compose up
+}
+
+function plung() {
+    DOCKER_IMAGE_NAME=${1:-lucidaclinc_clinc-api-server_1}
+    docker exec -it $DOCKER_IMAGE_NAME bash
+}
+
+function docker-base-image() {
+	DOCKER_BASE_IMAGE_NAME=$1
+	BASE_DOCKER=$DOCKER_BASE_IMAGE_NAME make docker-base
+}
+
+function docker-clean(){
+    docker rmi $(docker images --quiet --filter "dangling=true")
+}
+
+function findstring(){
+        grep -i -r --include="*.$1" $2 .
+}
+
+function psql-up(){
+    sudo pkill -u postgres
+    docker-flush
+    docker_postgres
+    PGPASSWORD=clincdev psql  -h localhost -c 'create database clinc_soc_metrics;'
+    PGPASSWORD=clincdev psql  -h localhost -d clinc_soc_metrics -a -f ~/deployments/tda/psql/soc_metrics.sql
+    PGPASSWORD=clincdev psql  -h localhost -d clinc_soc_metrics -a -f ~/deployments/tda/psql/soc_dates.sql
+}
+
+function copy_runtime(){
+    echo "removing volume mapped files"
+    sudo rm -rf $CLINC_PATH/aiutils/queryclassifier/KB/*
+    sudo rm -rf $CLINC_PATH/aiutils/slotvaluepairer/data/*
+    sudo rm -rf $CLINC_PATH/aiutils/slotvaluepairer/models/*
+    sudo rm -rf $CLINC_PATH/bankutils/observables/handlers/json/*
+    sudo rm -rf $CLINC_PATH/bankutils/observables/visualgeneration/json/*
+
+    echo "Copying init files to volume mapped files"
+    sudo cp -r $CLINC_PATH/aiutils/queryclassifier/init_KB/* $CLINC_PATH/aiutils/queryclassifier/KB/
+    sudo cp -r $CLINC_PATH/aiutils/slotvaluepairer/init_data/* $CLINC_PATH/aiutils/slotvaluepairer/data/
+    sudo cp -r $CLINC_PATH/aiutils/slotvaluepairer/init_models/* $CLINC_PATH/aiutils/slotvaluepairer/models/
+    sudo cp -r $CLINC_PATH/bankutils/observables/handlers/init_json/* $CLINC_PATH/bankutils/observables/handlers/json/
+    sudo cp -r $CLINC_PATH/bankutils/observables/visualgeneration/init_json/* $CLINC_PATH/bankutils/observables/visualgeneration/json/
+}
+
+
+export EDITOR=vim ####whatever editor
+export CLINC_PATH=/home/kamal/repos/lucida-clinc
+export LUCIDA_HOSTNAME=tank.clinc.ai
+export PYTHONPATH=/home/kamal/repos/lucida-clinc:/home/kamal/repos/send_query
+export GOOGLE_APPLICATION_CREDENTIALS=~/repos/lucida-clinc/uservices/asr/googlecloudspeech/credentials.json
+export TF_CPP_MIN_LOG_LEVEL=2
+
+function cpin() {
+    docker cp $CLINC_PATH/$1 lucidaclinc_clinc-api-server_1:/usr/local/lucida-clinc/$1
+}
+
+function cpout() {
+    docker cp lucidaclinc_clinc-api-server_1:/usr/local/lucida-clinc/$1 $CLINC_PATH/$1
+}
+
+function td(){
+    docker exec -ti lucidaclinc_clinc-api-server_1 touch ../clincapi/common/wsgi.py
+}
+
+function first_push(){
+    echo $(git branch | grep \*) | git push --set-upstream origin 
+}
+
+function gr(){
+    grep -r $1 
+}

@@ -91,5 +91,5 @@ set encoding=utf-8
 
 set background=dark
 set t_Co=256
-colorscheme solarized
-call togglebg#map("<F5>")
+"colorscheme solarized
+"call togglebg#map("<F5>")
