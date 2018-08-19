@@ -1,7 +1,7 @@
 # zsh is default installation but you can specify bash too
 SHELL_OPTION=${1:-zsh} 
 # basic package installaion
-brew install vim curl git cmake
+brew install vim curl git cmake ack
 
 #setup zsh
 if [ "$SHELL_OPTIONl" = "zsh" ]; then

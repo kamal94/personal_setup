@@ -1,7 +1,7 @@
 # zsh is default installation but you can specify bash too
 SHELL_OPTION=${1:-zsh} 
 # basic package installaion
-sudo apt-get install vim curl git 
+sudo apt-get install vim curl git ack
 
 #setup zsh
 if [ "$SHELL_OPTIONl" = "zsh" ]; then
