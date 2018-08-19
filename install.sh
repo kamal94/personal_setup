@@ -13,5 +13,6 @@ fi
 # alias, vim, and tmux setup
 cp aliases ~/.aliases.sh
 cp shell_helpers ~/.shell_helpers.sh
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp vimrc ~/.vimrc
-vim +PlugInstall +qall
+vim +PluginInstall +qall
