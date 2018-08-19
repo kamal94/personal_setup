@@ -1,7 +1,7 @@
 # zsh is default installation but you can specify bash too
 SHELL_OPTION=${1:-zsh} 
 # basic package installaion
-brew install vim curl git 
+brew install vim curl git cmake
 
 #setup zsh
 if [ "$SHELL_OPTIONl" = "zsh" ]; then
@@ -12,8 +12,10 @@ if [ "$SHELL_OPTIONl" = "zsh" ]; then
 fi
 
 # alias, vim, and tmux setup
+pip3 install pylint
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp aliases ~/.aliases.sh
 cp shell_helpers ~/.shell_helpers.sh
 cp vimrc ~/.vimrc
 vim +PluginInstall +qall
+cd ~/.vim/bundle/YouCompleteMe/ && python3 install.py
