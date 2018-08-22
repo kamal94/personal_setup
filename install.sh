@@ -21,6 +21,7 @@ cp aliases ~/.aliases.sh
 source ~/.aliases.sh
 cp shell_helpers ~/.shell_helpers.sh
 source ~/.shell_helpers.sh
+cp .tmux.conf ~/.tmux.conf
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp vimrc ~/.vimrc
 vim +PluginInstall +qall
