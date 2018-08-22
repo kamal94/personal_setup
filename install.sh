@@ -13,6 +13,7 @@ fi
 # alias, vim, and tmux setup
 pip3 install pylint
 cp aliases ~/.aliases.sh
+cp .tmux.conf ~/.tmux.conf
 cp shell_helpers ~/.shell_helpers.sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp vimrc ~/.vimrc
