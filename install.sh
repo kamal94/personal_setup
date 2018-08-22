@@ -11,17 +11,17 @@ if [ "$SHELL_OPTION" == "zsh" ]; then
   echo "shell option:"
   echo $SHELL_OPTION
   sudo apt-get install zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  cp zshrc  ~/.zshrc
+  sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sudo cp zshrc  ~/.zshrc
 fi
 
 # alias, vim, and tmux setup
-pip3 install pylint
-cp aliases ~/.aliases.sh
-source ~/.aliases.sh
-cp shell_helpers ~/.shell_helpers.sh
-source ~/.shell_helpers.sh
-cp .tmux.conf ~/.tmux.conf
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp vimrc ~/.vimrc
+cp aliases ~/.aliases.sh
+cp shell_helpers ~/.shell_helpers.sh
+cp .tmux.conf ~/.tmux.conf
+pip3 install pylint
+source ~/.aliases.sh
+source ~/.shell_helpers.sh
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
