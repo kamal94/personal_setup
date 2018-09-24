@@ -71,9 +71,9 @@ function copy_runtime(){
 
 
 export EDITOR=vim ####whatever editor
-export CLINC_PATH=/home/kamal/repos/lucida-clinc
+export CLINC_PATH=$HOME/repos/lucida-clinc
 export LUCIDA_HOSTNAME=tank.clinc.ai
-export PYTHONPATH=/home/kamal/repos/lucida-clinc:/home/kamal/repos/send_query
+export PYTHONPATH=$HOME/repos/lucida-clinc:$HOME/repos/send_query
 export GOOGLE_APPLICATION_CREDENTIALS=~/repos/lucida-clinc/uservices/asr/googlecloudspeech/credentials.json
 export TF_CPP_MIN_LOG_LEVEL=2
 
