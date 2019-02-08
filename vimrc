@@ -3,7 +3,7 @@ filetype off                  " required
 syntax on
 color desert
 set nu
-set ignorecase
+set smartcase
 set cursorline
 set colorcolumn=80
 set clipboard=unnamed
