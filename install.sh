@@ -19,7 +19,7 @@ fi
 cp vimrc ~/.vimrc
 cp aliases ~/.aliases.sh
 cp shell_helpers ~/.shell_helpers.sh
-cp .tmux.conf ~/.tmux.conf
+cp tmux.conf ~/.tmux.conf
 pip3 install pylint
 source ~/.aliases.sh
 source ~/.shell_helpers.sh
