@@ -11,6 +11,7 @@ alias v='vim'
 alias r='printf "\033c"'
 alias aliases="vim ~/.aliases.sh && source ~/.aliases.sh"
 alias p="python"
+alias p3="python3"
 alias s="git status -s"
 alias zshconfig="vim ~/.zshrc && source ~/.zshrc"
 alias helpers="vim ~/.shell_helpers.sh && source ~/.shell_helpers.sh"
