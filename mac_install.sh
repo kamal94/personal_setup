@@ -17,5 +17,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cp aliases ~/.aliases.sh
 cp shell_helpers ~/.shell_helpers.sh
 cp vimrc ~/.vimrc
+cp custom-wezm.zsh-theme ~/.oh-my-zsh/themes
 vim +PluginInstall +qall
 cd ~/.vim/bundle/YouCompleteMe/ && python3 install.py

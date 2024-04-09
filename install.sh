@@ -20,6 +20,7 @@ cp vimrc ~/.vimrc
 cp aliases ~/.aliases.sh
 cp shell_helpers ~/.shell_helpers.sh
 cp tmux.conf ~/.tmux.conf
+cp custom-wezm.zsh-theme ~/.oh-my-zsh/themes
 pip3 install pylint
 source ~/.aliases.sh
 source ~/.shell_helpers.sh
